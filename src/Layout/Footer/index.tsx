@@ -2,12 +2,10 @@ import { Grid, Typography } from "@mui/material";
 import Link from "next/link";
 import Logo from "src/components/Logo";
 import { StyledLink } from "src/components/StyledLink";
-import { Boxed, GridItem } from "../styles";
-import { FooterWrapper } from "./styles";
+import { Boxed, GridItem } from "src/Layout/styles";
+import { FooterWrapper } from "src/Layout/Footer/styles";
 
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <FooterWrapper>
       <Boxed>

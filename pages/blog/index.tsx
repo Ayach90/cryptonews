@@ -1,7 +1,13 @@
 import Layout from "src/Layout";
-import Archive from "src/pagesComponent/blog/Archive";
+import Archive from "src/components/Archive";
+import { Post } from "src/types";
 
-export default function Blog({ posts, totalPages }) {
+type Props = {
+  posts: Post[];
+  totalPages: number;
+};
+
+export default function Blog({ posts, totalPages }: Props) {
   return (
     <Layout
       title="Blog - CryptosNews"
@@ -19,6 +25,6 @@ export async function getStaticProps() {
   const posts = await resPosts.json();
 
   const totalPages = resPosts.headers.get("x-wp-totalpages");
-
+  console.log(posts);
   return { props: { posts, totalPages }, revalidate: 600 };
 }

@@ -1,8 +1,8 @@
-import { PanoramaSharp } from "@mui/icons-material";
 import Layout from "src/Layout";
-import Archive from "src/pagesComponent/blog/Archive";
+import Archive from "src/components/Archive";
+import { Post } from "src/types";
 
-type Props = {};
+type Props = { posts: Post[]; totalPages: number; currentPage: number };
 
 const Number = ({ posts, totalPages, currentPage }) => {
   return (

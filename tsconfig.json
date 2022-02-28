@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/api/getWallet.js"  ],
+, "pages/api/getWallet.js", "src/contexts/AuthContext.ts"  ],
   "exclude": [
     "node_modules"
   ]

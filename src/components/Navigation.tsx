@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Box,
   Pagination,
@@ -5,10 +6,14 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import Link from "next/link";
-import { StyledLink } from "./StyledLink";
+import { StyledLink } from "src/components/StyledLink";
 
-const Navigation = ({ totalPages, currentPage }) => {
+type Props = {
+  totalPages: number;
+  currentPage: number;
+};
+
+const Navigation = ({ totalPages, currentPage }: Props) => {
   if (currentPage > 1 && currentPage < totalPages) {
     return (
       <Box marginY={5}>

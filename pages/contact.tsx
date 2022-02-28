@@ -3,9 +3,7 @@ import React from "react";
 import Layout from "src/Layout";
 import { Boxed } from "src/Layout/styles";
 
-type Props = {};
-
-const Contact = (props: Props) => {
+const Contact = () => {
   return (
     <Layout
       title="Contact - CryptosNews"

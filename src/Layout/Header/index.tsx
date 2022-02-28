@@ -1,3 +1,9 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Head from "next/head";
+import Link from "next/link";
+import { signOut } from "firebase/auth";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
@@ -7,13 +13,10 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import Head from "next/head";
 import Logo from "src/components/Logo";
-import Link from "next/link";
-import { MenuHeader, MuiMenuItem, MuiMenuItemDark } from "./styles";
-import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
-import { StyledLink } from "src/components/StyledLink";
+import { MuiMenuItem, MuiMenuItemDark } from "src/Layout/Header/styles";
+import { auth } from "src/firebase/firebaseConfig";
+import { useAuth } from "src/contexts/AuthContext";
 
 type Props = {
   title: string;
@@ -28,6 +31,9 @@ const Header = ({
   ogtitle = undefined,
   ogimage = undefined,
 }: Props) => {
+  const router = useRouter();
+  const { user } = useAuth();
+
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (e) => {
@@ -37,6 +43,16 @@ const Header = ({
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -100,6 +116,24 @@ const Header = ({
                     <a>Contact</a>
                   </Link>
                 </MuiMenuItemDark>
+                {user ? (
+                  <>
+                    <MuiMenuItemDark>
+                      <Link href="/profile/">
+                        <a>Profile</a>
+                      </Link>
+                    </MuiMenuItemDark>
+                    <MuiMenuItemDark>
+                      <Typography onClick={logout}>Logout</Typography>
+                    </MuiMenuItemDark>
+                  </>
+                ) : (
+                  <MuiMenuItemDark>
+                    <Link href="/login/">
+                      <a>Login</a>
+                    </Link>
+                  </MuiMenuItemDark>
+                )}
               </Menu>
             </Box>
             <Typography
@@ -125,6 +159,24 @@ const Header = ({
                   <a>Contact</a>
                 </Link>
               </MuiMenuItem>
+              {user ? (
+                <>
+                  <MuiMenuItem>
+                    <Link href="/profile/">
+                      <a>Profile</a>
+                    </Link>
+                  </MuiMenuItem>
+                  <MuiMenuItem>
+                    <Typography onClick={logout}>Logout</Typography>
+                  </MuiMenuItem>
+                </>
+              ) : (
+                <MuiMenuItem>
+                  <Link href="/login/">
+                    <a>Login</a>
+                  </Link>
+                </MuiMenuItem>
+              )}
             </Box>
           </Toolbar>
         </Container>

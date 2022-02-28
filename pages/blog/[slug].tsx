@@ -1,10 +1,11 @@
-import React from "react";
 import Layout from "src/Layout";
 import { Boxed } from "src/Layout/styles";
+import { Post } from "src/types";
 
-type Props = {};
-
-const Post = ({ post }) => {
+type Props = {
+  post: Post;
+};
+const Post = ({ post }: Props) => {
   const { title, content, excerpt } = post[0];
 
   return (

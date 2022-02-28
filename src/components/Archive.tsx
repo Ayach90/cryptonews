@@ -1,25 +1,25 @@
+import React from "react";
+import Link from "next/link";
 import {
   Box,
   Card,
-  CardActionArea,
   CardContent,
   CardMedia,
   Grid,
   Typography,
 } from "@mui/material";
-import Link from "next/link";
-import React from "react";
 import Navigation from "src/components/Navigation";
 import { StyledLink } from "src/components/StyledLink";
 import { Boxed } from "src/Layout/styles";
+import { Post } from "src/types";
 
-type Props = {};
+type Props = { posts: Post[]; totalPages: number; currentPage?: number };
 
-const Archive = ({ posts, totalPages, currentPage = 1 }) => {
+const Archive = ({ posts, totalPages, currentPage = 1 }: Props) => {
   return (
     <Boxed>
       <Grid container spacing={2}>
-        {posts.map((post) => {
+        {posts.map((post: Post) => {
           const { title, link, featured_image_src, id, excerpt } = post;
           const newLink = link.split("https://cryptosnews.angelayach.com/");
           return (
