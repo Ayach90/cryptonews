@@ -1,34 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a project in NextJS that allows to see the price and other metrics about the main cryptocurrencies through third service from an API . Also, the site has a blog that get posts from a WordPress installation and the possibility to do Login and create a list of cryptocurrencies and save it for your user. The backend to authenticate users and save the lists of cryptocurrencies is made with Firestore.
 
-## Getting Started
+## Installation
 
-First, run the development server:
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+git clone https://github.com/Ayach90/cryptonews.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build the project
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Run the project
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+npm start
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the project.
 
-To learn more about Next.js, take a look at the following resources:
+## Login credentials
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application not includes the register section, but there is a user created in order to try all features
+The credentials to do login are:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+user: angel@ayach.es
+pwd: Test12345
 
-## Deploy on Vercel
+## Technologies and libraries
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- NextJS
+- Typescript
+- Firebase Firestore
+- Firebase Authenticator
+- useSWR
+- Material UI (emotion)
