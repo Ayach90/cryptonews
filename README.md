@@ -1,4 +1,4 @@
-This is a project in NextJS that allows to see the price and other metrics about the main cryptocurrencies through third service from an API . Also, the site has a blog that get posts from a WordPress installation and the possibility to do Login and create a list of cryptocurrencies and save it for your user. The backend to authenticate users and save the lists of cryptocurrencies is made with Firestore.
+This is a project in NextJS that allows to see the price and other metrics about the main cryptocurrencies through third service from an API . Also, the site has a blog that get posts from a WordPress installation through API and the possibility to do Login and create a list of cryptocurrencies and save it for your user. The backend to authenticate users and save the lists of cryptocurrencies is made with Firestore.
 
 ## Installation
 

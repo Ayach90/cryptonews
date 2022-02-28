@@ -25,6 +25,5 @@ export async function getStaticProps() {
   const posts = await resPosts.json();
 
   const totalPages = resPosts.headers.get("x-wp-totalpages");
-  console.log(posts);
   return { props: { posts, totalPages }, revalidate: 600 };
 }
