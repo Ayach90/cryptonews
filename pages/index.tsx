@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Image from "next/image";
 import useSWR from "swr";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
@@ -6,14 +5,14 @@ import { Grid, Typography, CircularProgress, Box } from "@mui/material";
 import { useAuth } from "src/contexts/AuthContext";
 import Layout from "src/Layout";
 import { Boxed, FullWidth, GridItem } from "src/Layout/styles";
+import useGetCurrentCryptos from "src/hooks/useGetCurrentCyptos";
 
 const fetcher = (apiUrl: string) => fetch(apiUrl).then((res) => res.json());
 
 const Home = () => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [dialogInfo, setDialogInfo] = useState(undefined);
   const { user } = useAuth();
-  const { data, error } = useSWR(
+  const [currentCryptos] = useGetCurrentCryptos();
+  const { data: allCryptos, error: allCryptosError } = useSWR(
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=false",
     fetcher
   );
@@ -69,18 +68,18 @@ const Home = () => {
         <Boxed
           sx={{
             display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            flexDirection: "column",
           }}
         >
-          {!data ? (
+          <Typography variant="h4">All cryptos</Typography>
+          {!allCryptos ? (
             <Box sx={{ display: "flex", gap: "20px" }}>
               <CircularProgress />
               <Typography variant="h6">Loading Crypto info...</Typography>
             </Box>
           ) : (
             <DataGrid
-              rows={data}
+              rows={allCryptos}
               columns={columns}
               rowsPerPageOptions={[10]}
               autoHeight

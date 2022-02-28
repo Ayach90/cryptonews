@@ -26,39 +26,28 @@ const Profile = () => {
     fetcher
   );
   const [currentCryptos] = useGetCurrentCryptos();
-  const [cryptosUser, setCryptosUser] = useState([]);
   const [autocomplete, setAutocomplete] = useState("");
 
   const handleChange = (e) => {
     setAutocomplete(e.target.textContent);
   };
 
-  useEffect(() => {
-    const query = doc(db, "users", user.email);
-    getDoc(query)
-      .then((res) => setCryptosUser(res.data().cryptos))
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   const newCryptos = [];
   if (data) {
     data.forEach((item: Crypto) => {
-      if (!cryptosUser.includes(item.id)) {
+      if (!currentCryptos.includes(item.id)) {
         newCryptos.push(item.id);
       }
     });
   }
 
   const addCrypto = async () => {
-    if (!cryptosUser.includes(autocomplete)) {
-      const newCryptosUser = [...cryptosUser, autocomplete];
+    if (!currentCryptos.includes(autocomplete)) {
+      const newCryptosUser = [...currentCryptos, autocomplete];
       await setDoc(doc(db, "users", user.email), {
         email: user.email,
         cryptos: newCryptosUser,
       });
-      setCryptosUser([...cryptosUser, autocomplete]);
       setAutocomplete("");
     }
   };

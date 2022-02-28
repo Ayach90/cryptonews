@@ -10,7 +10,7 @@ const Footer = () => {
     <FooterWrapper>
       <Boxed>
         <Grid container spacing={2}>
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <GridItem>
               <Logo />
               <Typography variant="h6" color="#fff">
@@ -18,7 +18,7 @@ const Footer = () => {
               </Typography>
             </GridItem>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <GridItem>
               <Typography variant="body1" color="#fff">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
@@ -28,7 +28,7 @@ const Footer = () => {
               </Typography>
             </GridItem>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <GridItem>
               <StyledLink>
                 <Link href="http://localhost:3000/blog/">

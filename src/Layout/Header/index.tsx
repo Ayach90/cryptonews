@@ -106,6 +106,7 @@ const Header = ({
                   display: { xs: "block", md: "none" },
                 }}
               >
+                {/* Mobile Menu */}
                 <MuiMenuItemDark>
                   <Link href="/blog/">
                     <a>Blog</a>
@@ -117,7 +118,7 @@ const Header = ({
                   </Link>
                 </MuiMenuItemDark>
                 {user ? (
-                  <>
+                  <Box>
                     <MuiMenuItemDark>
                       <Link href="/profile/">
                         <a>Profile</a>
@@ -126,7 +127,7 @@ const Header = ({
                     <MuiMenuItemDark>
                       <Typography onClick={logout}>Logout</Typography>
                     </MuiMenuItemDark>
-                  </>
+                  </Box>
                 ) : (
                   <MuiMenuItemDark>
                     <Link href="/login/">
@@ -149,6 +150,7 @@ const Header = ({
               </Link>
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              {/* Desktop Menu */}
               <MuiMenuItem>
                 <Link href="/blog/">
                   <a>Blog</a>
@@ -160,7 +162,7 @@ const Header = ({
                 </Link>
               </MuiMenuItem>
               {user ? (
-                <>
+                <Box display="flex">
                   <MuiMenuItem>
                     <Link href="/profile/">
                       <a>Profile</a>
@@ -169,7 +171,7 @@ const Header = ({
                   <MuiMenuItem>
                     <Typography onClick={logout}>Logout</Typography>
                   </MuiMenuItem>
-                </>
+                </Box>
               ) : (
                 <MuiMenuItem>
                   <Link href="/login/">
